@@ -20,7 +20,7 @@ export default function Footer() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon sx={{fontSize:{xs:20, md:25, lg:30} }} color='secondary' />} sx={{fontSize:{xs:15, md:20, lg:25} }} />
+        <BottomNavigationAction label="Recents" icon={<RestoreIcon sx={{fontSize:{xs:20, md:25, lg:30} }} color='secondary' />} sx=  {{fontSize:{xs:15, md:20, lg:25} }} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon sx={{fontSize:{xs:20, md:25, lg:30} }}  color='secondary' />} sx={{fontSize:{xs:15, md:20, lg:25} }} />
         <BottomNavigationAction label="Nearby" icon={<LocationOnIcon sx={{fontSize:{xs:20, md:25, lg:30} }} color='secondary' />} sx={{fontSize:{xs:15, md:20, lg:25} }}/>
       </BottomNavigation>

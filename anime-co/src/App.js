@@ -1,21 +1,13 @@
 import React from 'react';
-import './App.css';
 import Navbar from './components/navbar/navbar'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import { CssBaseline, alpha } from '@mui/material'
 import Footer from './components/footer/footer';
 import {amber, grey, deepOrange, pink} from '@mui/material/colors'
+import Main from './components/main/main'
 
 
-const getDesignTokens = (mode: PaletteMode) => ({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    }},
+const getDesignTokens = (mode) => ({
   palette: {
     mode,
     ...(mode === 'light'
@@ -52,7 +44,7 @@ function App() {
       <ThemeProvider theme={dark_theme}>
     <CssBaseline/>
       <Navbar/>
-
+      <Main/>
       <Footer/>
       </ThemeProvider>
     </React.Fragment>
