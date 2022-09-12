@@ -26,7 +26,7 @@ const getDesignTokens = (mode) => ({
           divider:deepOrange[700],
           background: {
             default: grey[900],
-            paper: alpha(grey[800], 0.2),
+            paper: alpha(grey[800], 0.5),
           },
           text: {
             primary: pink[100],
