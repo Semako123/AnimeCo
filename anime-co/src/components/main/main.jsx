@@ -16,18 +16,35 @@ const API = axios.create({
 });
 
 const Main = () => {
-  useEffect(() => {
-    let isMounted = true;
-    API.get("/").then((res) => {
-      if (isMounted) setdata(res.data);
+  const [data, setdata] = useState("");
+  const [page, setPage] = useState(1);
+
+  const request_page = (page) => {
+    API.post("/home", { page: page }).then((res) => {
+      setdata(res.data)
     });
+  };
+
+  useEffect(() => {
+    const get_page = () => {
+      API.get("/").then((res) => {
+        if (isMounted) setdata(res.data);
+      });
+    };
+
+    let isMounted = true;
+    get_page();
+
     return () => {
       isMounted = false;
     };
   }, []);
 
-  const [data, setdata] = useState("");
-  console.log(data.data);
+  const handleChange = (e, page) => {
+    setPage(page);
+    request_page(page);
+  };
+
   return (
     <Box sx={{ mt: 6, p: 2 }}>
       <Typography variant="h5" color="inherit">
@@ -39,13 +56,14 @@ const Main = () => {
       {data && (
         <>
           <Pagination
-            count={10}
+            count={data.pagination.last_visible_page}
+            onChange={handleChange}
             shape="rounded"
             sx={{ margin: "auto", p: 1 }}
           />
           <Grid container spacing={2} justifyContent="space-evenly">
             {data.data.map((data) => (
-              <Grid item>
+              <Grid item key={data.title}>
                 <Card
                   sx={{
                     width: { lg: 175, md: 120, xs: 100 },
