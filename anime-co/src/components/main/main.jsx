@@ -3,12 +3,11 @@ import {
   Box,
   Typography,
   Card,
-  CardMedia,
   Grid,
   Pagination,
-  Chip,
 } from "@mui/material";
 import axios from "axios";
+import { AnimeCard } from "../anime-card/anime_card";
 import { useState, useEffect } from "react";
 
 const API = axios.create({
@@ -64,30 +63,7 @@ const Main = () => {
           <Grid container spacing={2} justifyContent="space-evenly">
             {data.data.map((data) => (
               <Grid item key={data.title}>
-                <Card
-                  sx={{
-                    width: { lg: 175, md: 120, xs: 100 },
-                    height: { lg: 240, md: 180, xs: 130 },
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    sx={{ height: { lg: 240, md: 180, xs: 130 } }}
-                    image={data.images.jpg.image_url}
-                    alt={data.title}
-                  />
-                </Card>
-                <Typography
-                  variant="subtitle2"
-                  color="inherit"
-                  sx={{
-                    width: { lg: 175, md: 120, xs: 100 },
-                    fontSize: { md: 15, xs: 10 },
-                    textAlign: "center",
-                  }}
-                >
-                  {data.title}
-                </Typography>
+                <AnimeCard data={ data } />
               </Grid>
             ))}
           </Grid>
